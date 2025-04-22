@@ -1,0 +1,10 @@
+[project]
+name = "splink-scalaudfs"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pyspark>=3.5.5",
+    "splink>=4.0.7",
+]
