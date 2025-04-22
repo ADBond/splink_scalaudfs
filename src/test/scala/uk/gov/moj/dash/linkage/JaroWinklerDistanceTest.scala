@@ -13,7 +13,7 @@ class JaroWinklerSimilarityTest extends AnyFlatSpec with Matchers {
 
         val distance = JaroWinklerSimilarity()
 
-        distance.call("","") should equal (0.0)
+        distance.call("","") should equal (1.0)
         distance.call("","a") should equal (0.0)
         distance.call("aaapppp", "") should equal (0.0)
         distance.call("frog", "fog") should equal (0.93)
