@@ -1,9 +1,11 @@
 package uk.gov.moj.dash.linkage
 
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import org.scalactic.TolerantNumerics
-import org.scalatest._
 
-class JaroWinklerSimilarityTest extends FlatSpec with Matchers {
+
+class JaroWinklerSimilarityTest extends AnyFlatSpec with Matchers {
 
     implicit val doubleEquality = TolerantNumerics.tolerantDoubleEquality(0.01)
 
