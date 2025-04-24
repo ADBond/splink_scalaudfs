@@ -227,6 +227,10 @@ lol. sdkman is quite useful isnt it?
 
 ## Progress
 
+v.0.1.2
+
+* Updated package dependency versions
+
 v.0.1.1
 
 * Added levenstein-damerau distance to the UDFs provided.
