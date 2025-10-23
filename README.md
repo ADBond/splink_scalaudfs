@@ -28,6 +28,11 @@ that wraps a call to JaroWinklerDistance from Apache commons.
 
 ## Package version history
 
+v.0.2.0
+
+* Spark 4 compatible version
+* removed Qngramtokenizer n > 1
+
 v.0.1.2
 
 * Updated package dependency versions
