@@ -29,4 +29,18 @@ class JaroWinklerSimilarityTest extends AnyFlatSpec with Matchers {
     }
 }
 
+class JaroSimilarityTest extends AnyFlatSpec with Matchers {
+
+    implicit val doubleEquality = TolerantNumerics.tolerantDoubleEquality(0.01)
+
+    "Wrapped Jaro" should "return same results" in {
+
+        val distance = JaroSimilarity()
+
+        distance.call("","") should equal (1.0)
+        distance.call("","a") should equal (0.0)
+        distance.call("aaapppp", "") should equal (0.0)
+        // TODO: further tests
+    }
+}
 
