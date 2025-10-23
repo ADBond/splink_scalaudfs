@@ -1,0 +1,4 @@
+services:
+  build:
+    container_name: splink_scalaudfs_build
+    build: .
