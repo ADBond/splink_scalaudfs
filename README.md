@@ -10,7 +10,11 @@ These are not published in any package repository, but relevant ones are bundled
 
 ## Dev
 
-You will need [maven]() to build the package into a `.jar` file, which can then be used by Splink.
+The goal is to build the package into a `.jar` file, which can then be used by Splink.
+
+This is done using [maven](https://maven.apache.org/), via docker. Just run `make package`.
+
+You can check if it is working with Splink by running `make check-splink`.
 
 ### Further info
 
