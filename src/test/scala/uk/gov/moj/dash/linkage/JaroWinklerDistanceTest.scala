@@ -40,7 +40,28 @@ class JaroSimilarityTest extends AnyFlatSpec with Matchers {
         distance.call("","") should equal (1.0)
         distance.call("","a") should equal (0.0)
         distance.call("aaapppp", "") should equal (0.0)
-        // TODO: further tests
+        distance.call("frog", "fog") should equal (0.9166666)
+        distance.call("elephant", "hippo") should equal (0.44)
+        distance.call("hippo", "elephant") should equal (0.44)
+        distance.call("My Gym Children's Fitness Center", "My Gym. Childrens Fitness") should equal (0.9033333)
+        distance.call("PENNSYLVANIA", "PENNCISYLVNIA") should equal (0.830)
+    }
+}
+
+
+class DamerauLevenshteinSimilarityTest extends AnyFlatSpec with Matchers {
+
+    "DamerauLevenshtein implementation" should "return same results" in {
+
+        val distance = LevDamerauDistance()
+
+        distance.call("","") should equal (0)
+        distance.call("","a") should equal (1)
+        distance.call("aaapppp", "") should equal (7)
+        distance.call("frog", "fog") should equal (1)
+        distance.call("elephant", "hippo") should equal (7)
+        distance.call("hippo", "elephant") should equal (7)
+        distance.call("ogre", "gore") should equal (1)
     }
 }
 
