@@ -6,7 +6,7 @@
 
   <groupId>uk.gov.moj.dash.linkage</groupId>
   <artifactId>scala-udf-similarity</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
