@@ -30,6 +30,7 @@ settings = {
         cl.JaroAtThresholds("first_name"),
         cl.JaroWinklerAtThresholds("substr(first_name, 1, 10)"),
         cl.DamerauLevenshteinAtThresholds("surname"),
+        cl.LevenshteinAtThresholds("substr(surname, 2, 3)"),
         cl.JaccardAtThresholds("substr(surname, 1, 10)"),
         cl.ExactMatch("Dmetaphone(city)"),
         cl.ExactMatch("DmetaphoneAlt(city)"),
