@@ -9,7 +9,7 @@
   <version>0.2.0</version>
 
   <properties>
-    <scala.version>2.13.17</scala.version>
+    <scala.version>2.13.16</scala.version>
     <spark.version>4.0.0</spark.version>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
