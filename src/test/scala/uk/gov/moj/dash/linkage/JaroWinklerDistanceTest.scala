@@ -3,11 +3,12 @@ package uk.gov.moj.dash.linkage
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import org.scalactic.TolerantNumerics
+import org.scalactic.Equality
 
 
 class JaroWinklerSimilarityTest extends AnyFlatSpec with Matchers {
 
-    implicit val doubleEquality = TolerantNumerics.tolerantDoubleEquality(0.01)
+    implicit val doubleEquality: Equality[Double] = TolerantNumerics.tolerantDoubleEquality(0.01)
 
     "Wrapped JaroWinkler" should "return same results" in {
 
@@ -31,7 +32,7 @@ class JaroWinklerSimilarityTest extends AnyFlatSpec with Matchers {
 
 class JaroSimilarityTest extends AnyFlatSpec with Matchers {
 
-    implicit val doubleEquality = TolerantNumerics.tolerantDoubleEquality(0.01)
+    implicit val doubleEquality: Equality[Double] = TolerantNumerics.tolerantDoubleEquality(0.01)
 
     "Wrapped Jaro" should "return same results" in {
 
