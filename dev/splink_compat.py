@@ -12,7 +12,7 @@ conf.set("spark.default.parallelism", "16")
 
 # Add custom similarity functions, which are bundled with Splink
 # documented here: https://github.com/moj-analytical-services/splink_scalaudfs
-path = "jars/scala-udf-similarity-0.2.0.jar"
+path = "jars/scala-udf-similarity-0.2.1.jar"
 # cf existing version:
 # path = similarity_jar_location()
 conf.set("spark.jars", path)
