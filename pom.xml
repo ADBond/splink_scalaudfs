@@ -6,12 +6,12 @@
 
   <groupId>uk.gov.moj.dash.linkage</groupId>
   <artifactId>scala-udf-similarity</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scala.version>2.13.16</scala.version>
-    <spark.version>4.0.0</spark.version>
+    <spark.version>4.1.1</spark.version>
     <maven.compiler.release>17</maven.compiler.release>
   </properties>
 
@@ -26,14 +26,14 @@
     <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_2.13</artifactId>
-      <version>3.2.19</version>
+      <version>3.2.20</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.17.1</version>
+      <version>1.22.0</version>
     </dependency>
   </dependencies>
 

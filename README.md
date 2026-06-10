@@ -1,6 +1,6 @@
 #  splink_scalaudfs
 
-Scala functions, for use in Spark, designed for use with [Splink](https://moj-analytical-services.github.io/splink/).
+Scala functions, for use in [Apache Spark](https://spark.apache.org/), designed for use with the data-linking python package [Splink](https://moj-analytical-services.github.io/splink/).
 
 ## Jars
 
@@ -28,74 +28,10 @@ that wraps a call to JaroWinklerDistance from Apache commons.
 
 ## Package version history
 
-v.0.2.0
-
-* Spark 4 compatible version
-* removed Qngramtokenizer n > 1
-
-v.0.1.2
-
-* Updated package dependency versions
-
-v.0.1.1
-
-* Added levenstein-damerau distance to the UDFs provided.
-
-v.0.1.0
-
-* ensured databricks installations got working jaro_winkler as there was a problem manifesting only on those spark installations.
-* took out some not used udfs in order to make fatjar a bit smaller
-
-v.0.0.10
-
-* added BeiderMorseEncode UDF
-* added NysiisEncode UDF
-* added guessNameLanguage UDF
-
-v.0.0.9
-
-* added null handling on UDFs of the form UDF(string1,string2)
-
-v.0.0.8
-
-* Removed Logit and Expit UDFs
-* added latlongexplode UDF
-* added escapeSQL
-
-
-v.0.0.7
-
-* Added DualArrayExplode UDF . Also added Logit and Expit UDFs (experimental). Added alternate encoding of Double Metaphone from Apache Commons 
-
-
-v.0.0.6
-
-* Added QgramTokenisers for Q3grams,Q4grams,Q5grams,Q6grams 
-
-v.0.0.5
-
-* Added a small QgramTokeniser 
-
-v.0.0.4
-
-* Added Double Metaphone from Apache Commons  ( org.apache.commons.codec.language._ )
-
-
-v.0.0.3
-
-* cleaning up and housekeeping
-
-v.0.0.2
-
-* JaroWinklerSimilarity has been used instead of JaroWinklerDistance 
-* Added CosineDistance and JaccardSimilarity from Apache Commons
-
-v.0.0.1
-
-* get this mechanism working and output JaroWinklerDistance jar. Test that its working on AP.
+See [the changelog](./CHANGELOG.md).
 
 ---
 
 ## References:
 
-[1] [Using a Scala UDF Example](https://github.com/ONSBigData/scala_udf_example)  @philip-lee-ons
+[1]: [Using a Scala UDF Example](https://github.com/ONSBigData/scala_udf_example)  @philip-lee-ons
