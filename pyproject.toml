@@ -3,8 +3,22 @@ name = "splink-scalaudfs"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 dependencies = [
-    "pyspark>=4.1.1",
     "splink>=4.0.7",
+]
+
+[dependency-groups]
+spark3 = [
+  "pyspark>=3,<4",
+]
+spark4 = ["pyspark>=4.0.0"]
+
+[tool.uv]
+exclude-newer = "7 days"
+conflicts = [
+  [
+    { group = "spark4" },
+    { group = "spark3" },
+  ]
 ]
