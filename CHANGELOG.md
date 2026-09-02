@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-06-10
+
+### Fixed
+
+-  Update bundled `commons-codec` dependency to 1.22.0 (and transitively `commons-lang3` to 3.20.0), meaning we no longer have [this CVE](https://www.cve.org/CVERecord?id=CVE-2025-48924) present [#4](https://github.com/ADBond/splink_scalaudfs/pull/4).
+
 ## [0.2.0] - 2025-10-23
 
 ### Changed
