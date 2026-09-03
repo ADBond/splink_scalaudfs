@@ -4,4 +4,5 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-RUN mvn package
+ARG MAVEN_PROFILE=
+RUN mvn --errors --show-version --batch-mode --no-transfer-progress clean package ${MAVEN_PROFILE}

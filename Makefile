@@ -1,17 +1,23 @@
 export PYTHONDONTWRITEBYTECODE=1
 
+.PHONY: check-commons check-splink build package build-and-check
+
 SERVICE       := build
 CONTAINER     := splink_scalaudfs_build
+VERSION       := 0.2.2
+SPARK_COMPAT  ?= spark4
+MAVEN_PROFILE = $(if $(filter spark3,$(SPARK_COMPAT)),-Pspark3,)
+JAR           = scala-udf-similarity-$(VERSION)_$(SPARK_COMPAT).jar
 
 check-splink:
 	uv run dev/splink_compat.py
 
 package:
-	docker compose build
+	docker compose build --build-arg MAVEN_PROFILE="$(MAVEN_PROFILE)"
 	docker compose create $(SERVICE)
 	docker compose start $(SERVICE)
 	docker exec -t $(CONTAINER) ls -ls /app/target/
-	docker cp $(CONTAINER):/app/target/scala-udf-similarity-0.2.1.jar jars/scala-udf-similarity-0.2.1.jar
+	docker cp $(CONTAINER):/app/target/$(JAR) jars/$(JAR)
 	docker compose stop $(SERVICE)
 	docker compose rm -f $(SERVICE)
 
