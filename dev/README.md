@@ -1,6 +1,10 @@
 #  splink_scalaudfs
 
-Historic README
+Historic README for reference.
+
+For better up-to-date information see the [main README](../README.md), and for package changes check out the [changelog](../CHANGELOG.md).
+
+---
 
 This module was started as an extension of an example provided in [1]
 Phillip Lee (ONS) has created an example of a UDF defined in Scala, callable from PySpark,
