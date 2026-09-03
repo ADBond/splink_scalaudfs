@@ -16,6 +16,8 @@ This is done using [maven](https://maven.apache.org/), via docker. Just run `mak
 
 You can check if it is working with Splink by running `make check-splink`.
 
+For Spark 3 compatible versions, which need to be compiled against a different version of Scala, set the environment variable `SPARK_COMPAT=spark3`
+
 ### Further info
 
 For more information check out the [dev readme](./dev/README.md).
