@@ -10,7 +10,7 @@ MAVEN_PROFILE = $(if $(filter spark3,$(SPARK_COMPAT)),-Pspark3,)
 JAR           = scala-udf-similarity-$(VERSION)_$(SPARK_COMPAT).jar
 
 check-splink:
-	uv run dev/splink_compat.py
+	uv run --group ${SPARK_COMPAT} python dev/splink_compat.py jars/$(JAR)
 
 package:
 	docker compose build --build-arg MAVEN_PROFILE="$(MAVEN_PROFILE)"
