@@ -6,26 +6,43 @@
 
   <groupId>uk.gov.moj.dash.linkage</groupId>
   <artifactId>scala-udf-similarity</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scala.version>2.13.16</scala.version>
+    <scala.binary.version>2.13</scala.binary.version>
     <spark.version>4.1.1</spark.version>
+    <spark.compatibility>spark4</spark.compatibility>
     <maven.compiler.release>17</maven.compiler.release>
+    <commons-codec.version>1.22.0</commons-codec.version>
+    <commons-lang3.version>3.19.0</commons-lang3.version>
+    <commons-text.version>1.14.0</commons-text.version>
   </properties>
+
+  <profiles>
+    <profile>
+      <id>spark3</id>
+      <properties>
+        <scala.version>2.12.18</scala.version>
+        <scala.binary.version>2.12</scala.binary.version>
+        <spark.version>3.5.0</spark.version>
+        <spark.compatibility>spark3</spark.compatibility>
+      </properties>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql_2.13</artifactId>
+      <artifactId>spark-sql_${scala.binary.version}</artifactId>
       <version>${spark.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_2.13</artifactId>
+      <artifactId>scalatest_${scala.binary.version}</artifactId>
       <version>3.2.20</version>
       <scope>test</scope>
     </dependency>
@@ -33,11 +50,24 @@
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.22.0</version>
+      <version>${commons-codec.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${commons-lang3.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+      <version>${commons-text.version}</version>
     </dependency>
   </dependencies>
 
   <build>
+    <finalName>${project.artifactId}-${project.version}_${spark.compatibility}</finalName>
     <plugins>
       <plugin>
         <groupId>net.alchim31.maven</groupId>

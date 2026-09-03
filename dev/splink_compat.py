@@ -1,9 +1,13 @@
-from pyspark import SparkContext, SparkConf
-from pyspark.sql import SparkSession
-from pyspark.sql.types import DoubleType, StringType
+import os
+import sys
 
-from splink import SparkAPI, Linker, splink_datasets
+from pyspark import __version__, SparkContext, SparkConf
+from pyspark.sql import SparkSession
+
+from splink import SparkAPI, Linker, block_on, splink_datasets
 import splink.comparison_library as cl
+
+print(f"Checking pyspark version: {__version__}")
 
 conf = SparkConf()
 # This parallelism setting is only suitable for a small toy example
@@ -12,7 +16,10 @@ conf.set("spark.default.parallelism", "16")
 
 # Add custom similarity functions, which are bundled with Splink
 # documented here: https://github.com/moj-analytical-services/splink_scalaudfs
-path = "jars/scala-udf-similarity-0.2.1.jar"
+path = os.environ.get(
+    "SCALA_UDF_JAR",
+    sys.argv[1] if len(sys.argv) > 1 else "jars/scala-udf-similarity-0.2.2_spark4.jar",
+)
 # cf existing version:
 # path = similarity_jar_location()
 conf.set("spark.jars", path)
@@ -35,6 +42,11 @@ settings = {
         cl.ExactMatch("Dmetaphone(city)"),
         cl.ExactMatch("DmetaphoneAlt(city)"),
     ],
+    "blocking_rules_to_generate_predictions": [
+        block_on("first_name"),
+        block_on("surname"),
+        block_on("city"),
+    ]
 }
 
 db_api = SparkAPI(spark_session=spark)

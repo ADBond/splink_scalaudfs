@@ -10,10 +10,16 @@ permissions: {}
 jobs:
   build:
 
-    name: Build maven package
+    name: Build ${{ matrix.spark-compat }}-compatible maven package
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        spark-compat:
+          - spark4
+          - spark3
         
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -28,9 +34,11 @@ jobs:
         distribution: 'temurin'
         java-version: 17
 
-    - name: Build with Maven
+    - name: Build maven package
       id: maven_package
-      run: mvn --errors --show-version --batch-mode --no-transfer-progress clean package
+      env:
+        SPARK_COMPAT: ${{ matrix.spark-compat }}
+      run: make package
 
     - name: Setup uv
       id: setup_uv
@@ -40,9 +48,10 @@ jobs:
 
     - name: Install dependencies
       id: install_dependencies
-      run: uv sync
+      run: uv sync --group ${{ matrix.spark-compat }}
 
     - name: Run python check
       id: run_check
-      run: |
-        uv run python dev/splink_compat.py
+      env:
+        SPARK_COMPAT: ${{ matrix.spark-compat }}
+      run: make check-splink
